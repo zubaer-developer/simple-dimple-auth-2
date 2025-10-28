@@ -39,16 +39,28 @@ function App() {
   };
   return (
     <>
-      <h1>Please Sign In</h1>
+      {/* <h1>Please Sign In</h1>
       <button onClick={handleGoogleSignIn}>Sign In With Google</button>
       <button onClick={handleGitHubSignIn}>Sign In With GitHub</button>
-      <button onClick={handleSignOut}>Sign Out</button>
+      <button onClick={handleSignOut}>Sign Out</button> */}
+
+      {user ? (
+        <div>
+          <button onClick={handleSignOut}>Sign Out</button>
+        </div>
+      ) : (
+        <div>
+          <h1>Please Sign In</h1>
+          <button onClick={handleGoogleSignIn}>Sign In With Google</button>
+          <button onClick={handleGitHubSignIn}>Sign In With GitHub</button>
+        </div>
+      )}
 
       {user && (
         <div>
-          <h3> {user.displayName} </h3>
+          <h3>Wellcome, {user.displayName} </h3>
           <h3> {user.email} </h3>
-          <img src={user.photoUrl} alt="" />
+          <img src={user.photoURL} alt="" />
         </div>
       )}
     </>
