@@ -32,6 +32,7 @@ function App() {
     signOut(auth)
       .then(() => {
         console.log("sign out successfully");
+        setUser(null);
       })
       .catch((error) => {
         console.log(error);
