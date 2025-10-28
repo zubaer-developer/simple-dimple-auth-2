@@ -1,9 +1,15 @@
-import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
 import "./App.css";
 import { auth } from "./firebase/firebase";
 import { useState } from "react";
 
 const googleProvider = new GoogleAuthProvider();
+const gitHubProvider = new GithubAuthProvider();
 
 function App() {
   const [user, setUser] = useState(null);
@@ -25,6 +31,14 @@ function App() {
 
   const handleGitHubSignIn = () => {
     console.log("clicked git hub sign in");
+    signInWithPopup(auth, gitHubProvider)
+      .then((result) => {
+        console.log(result.user);
+        setUser(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleSignOut = () => {
